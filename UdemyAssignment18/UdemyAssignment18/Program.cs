@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UnityAssignment18
+namespace UdemyAssignment18
 {
     internal class Program
     {

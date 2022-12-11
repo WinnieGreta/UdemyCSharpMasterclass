@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityAssignment18", "UnityAssignment18\UnityAssignment18.csproj", "{E314950D-528B-4F53-B169-13AA573D2981}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UdemyAssignment18", "UdemyAssignment18\UdemyAssignment18.csproj", "{E314950D-528B-4F53-B169-13AA573D2981}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

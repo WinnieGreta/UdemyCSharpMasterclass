@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UnityAssignment18
+namespace UdemyAssignment18
 {
     internal class Box
     {
