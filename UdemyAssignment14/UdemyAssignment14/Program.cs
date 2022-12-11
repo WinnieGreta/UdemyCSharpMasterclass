@@ -11,7 +11,7 @@ namespace UdemyAssignment14
 
         public static void AverageScoreCalculator()
         {
-            int averageScore;
+            double averageScore;
             int sumScore = 0;
             int studentCount = 0;
             string score = "";
@@ -36,7 +36,7 @@ namespace UdemyAssignment14
 
             if (studentCount > 0)
             {
-                averageScore = sumScore / studentCount;
+                averageScore = (double)sumScore / studentCount;
                 Console.WriteLine("Average score is " + averageScore);
             } else
             {
