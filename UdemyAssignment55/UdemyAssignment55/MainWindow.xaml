@@ -1,0 +1,22 @@
+﻿<Window x:Class="UdemyAssignment55.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UdemyAssignment55"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <Label FontWeight="Bold">Pizza Topings</Label>
+        <CheckBox Name="cbAllTopings" IsThreeState="True" Checked="cbAllCheckedChanged" Unchecked="cbAllCheckedChanged">Add All</CheckBox>
+        <StackPanel Margin="10">
+            <CheckBox Name="cbSalami" Checked="cbSingleCheckedChanges" Unchecked="cbSingleCheckedChanges">
+                <TextBlock>
+                    Salami <Run Foreground="Red" FontWeight="Bold">Spicy</Run>
+                </TextBlock>
+            </CheckBox>
+            <CheckBox Name="cbMushrooms" Checked="cbSingleCheckedChanges" Unchecked="cbSingleCheckedChanges">Mushrooms</CheckBox>
+            <CheckBox Name="cbMozzarela" Checked="cbSingleCheckedChanges" Unchecked="cbSingleCheckedChanges">Mozzrela</CheckBox>
+        </StackPanel>
+    </StackPanel>
+</Window>
