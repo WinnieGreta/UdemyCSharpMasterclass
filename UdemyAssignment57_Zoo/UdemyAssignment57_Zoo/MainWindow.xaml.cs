@@ -44,5 +44,37 @@ namespace UdemyAssignment57_Zoo
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void ShowAssociatedAnimal()
+        {
+            try
+            {
+                string query = "SELECT * FROM Animal a INNER JOIN ZooAnimal za ON a.Id = za.AnimalId WHERE za.ZooId = @ZooId";
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+                using(sqlDataAdapter)
+                {
+                    sqlCommand.Parameters.AddWithValue("@ZooId", listZoos.SelectedValue);
+
+                    DataTable animalTable = new DataTable();
+                    sqlDataAdapter.Fill(animalTable);
+
+                    listAssociatedAnimals.DisplayMemberPath = "Name";
+                    listAssociatedAnimals.SelectedValuePath= "Id";
+                    listAssociatedAnimals.ItemsSource = animalTable.DefaultView;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void listZoos_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            ShowAssociatedAnimal();
+        }
     }
 }
