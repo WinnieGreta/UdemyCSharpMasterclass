@@ -20,6 +20,7 @@ namespace UdemyAssignment57_Zoo
             string connectionString = ConfigurationManager.ConnectionStrings["UdemyAssignment57_Zoo.Properties.Settings.GretaUdemyDBConnectionString"].ConnectionString;
             sqlConnection = new SqlConnection(connectionString);
             ShowZoos();
+            ShowAnimals();
         }
 
         private void ShowZoos()
@@ -37,6 +38,29 @@ namespace UdemyAssignment57_Zoo
                     listZoos.DisplayMemberPath = "Location";
                     listZoos.SelectedValuePath = "Id";
                     listZoos.ItemsSource = zooTable.DefaultView;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void ShowAnimals()
+        {
+            try
+            {
+                string query = "SELECT * FROM Animal";
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
+
+                using (sqlDataAdapter)
+                {
+                    DataTable animalTable = new DataTable();
+                    sqlDataAdapter.Fill(animalTable);
+
+                    listAnimals.DisplayMemberPath = "Name";
+                    listAnimals.SelectedValuePath = "Id";
+                    listAnimals.ItemsSource = animalTable.DefaultView;
                 }
             }
             catch (Exception ex)

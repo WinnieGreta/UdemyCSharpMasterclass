@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UdemyAssignment57_Zoo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="428" Width="706">
     <Grid>
         <Label x:Name="label" Content="Zoo list" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <ListBox Name="listZoos" Margin="10,41,649,217" SelectionChanged="listZoos_SelectionChanged"/>
+        <ListBox Name="listZoos" Margin="10,41,544,217" SelectionChanged="listZoos_SelectionChanged"/>
         <Label x:Name="label_Copy" Content="Associated Animals" HorizontalAlignment="Left" Margin="201,10,0,0" VerticalAlignment="Top"/>
-        <ListBox x:Name="listAssociatedAnimals" Margin="201,41,458,217"/>
+        <ListBox x:Name="listAssociatedAnimals" Margin="201,41,353,217"/>
+        <ListBox x:Name="listAnimals" Margin="400,41,45,52"/>
 
     </Grid>
 </Window>
