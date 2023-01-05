@@ -5,13 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UdemyAssignment57_Zoo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="428" Width="706">
+        Title="MainWindow" Height="386" Width="568">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="203*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="52*"/>
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="42*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
         <Label x:Name="label" Content="Zoo list" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <ListBox Name="listZoos" Margin="10,41,544,217" SelectionChanged="listZoos_SelectionChanged"/>
-        <Label x:Name="label_Copy" Content="Associated Animals" HorizontalAlignment="Left" Margin="201,10,0,0" VerticalAlignment="Top"/>
-        <ListBox x:Name="listAssociatedAnimals" Margin="201,41,353,217"/>
-        <ListBox x:Name="listAnimals" Margin="400,41,45,52"/>
+        <ListBox Name="listZoos" Margin="10,46,21,2" SelectionChanged="listZoos_SelectionChanged"/>
+        <Label x:Name="label_Copy" Content="Associated Animals" HorizontalAlignment="Left" Margin="18,10,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <ListBox x:Name="listAssociatedAnimals" Margin="18,46,26,2" Grid.Column="1"/>
+        <ListBox x:Name="listAnimals" Margin="20,46,16,4" Grid.Column="2" Grid.RowSpan="4"/>
+        <Button x:Name="DeleteZoo" Content="Delete Zoo" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Height="31" Width="152" Click="DeleteZoo_Click" Grid.Row="1"/>
+        <Button x:Name="RemoveAnimal" Content="Remove Animal" HorizontalAlignment="Left" Margin="18,0,0,0" VerticalAlignment="Center" Height="31" Width="152" Grid.Column="1" Grid.Row="1"/>
+        <Button x:Name="UpdateZoo" Content="Update Zoo" HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top" Height="31" Width="152" Grid.Row="4"/>
+        <Button x:Name="UpdateAnimal" Content="Update Animal" HorizontalAlignment="Left" Margin="18,1,0,0" VerticalAlignment="Top" Height="31" Width="152" Grid.Column="1" Grid.Row="4"/>
+        <Button x:Name="AddAnimalToZoo" Content="Add Animal To Zoo" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Height="31" Width="152" Grid.Column="2" Click="AddAnimalToZoo_Click"/>
+        <Button x:Name="DeleteAnimal" Content="Delete Animal" HorizontalAlignment="Left" Margin="20,1,0,0" VerticalAlignment="Top" Height="31" Width="152" Grid.Column="2" Grid.Row="4"/>
+        <Button x:Name="AddZoo" Content="Add Zoo" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Height="31" Width="152" Click="AddZoo_Click" Grid.Row="3"/>
+        <Button x:Name="AddAnimal" Content="Add Animal" HorizontalAlignment="Left" Margin="18,0,0,0" VerticalAlignment="Center" Height="31" Width="152" Grid.Column="1" Grid.Row="3"/>
+        <TextBox x:Name="myTextBox" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" Width="343" Height="46" Grid.ColumnSpan="2" Grid.Row="2"/>
 
     </Grid>
 </Window>

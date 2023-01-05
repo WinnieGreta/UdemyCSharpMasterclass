@@ -20,7 +20,7 @@ namespace UdemyAssignment57_Zoo
             string connectionString = ConfigurationManager.ConnectionStrings["UdemyAssignment57_Zoo.Properties.Settings.GretaUdemyDBConnectionString"].ConnectionString;
             sqlConnection = new SqlConnection(connectionString);
             ShowZoos();
-            ShowAnimals();
+            ShowAllAnimals();
         }
 
         private void ShowZoos()
@@ -46,7 +46,7 @@ namespace UdemyAssignment57_Zoo
             }
         }
 
-        private void ShowAnimals()
+        private void ShowAllAnimals()
         {
             try
             {
@@ -99,6 +99,72 @@ namespace UdemyAssignment57_Zoo
         private void listZoos_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             ShowAssociatedAnimal();
+        }
+
+        private void DeleteZoo_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string query = "DELETE FROM Zoo WHERE Id = @ZooId";
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlConnection.Open();
+
+                sqlCommand.Parameters.AddWithValue("@ZooId", listZoos.SelectedValue);
+                sqlCommand.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlConnection.Close();
+                ShowZoos();
+            }
+        }
+
+        private void AddZoo_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string query = "INSERT INTO Zoo VALUES (@Location)";
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlConnection.Open();
+                sqlCommand.Parameters.AddWithValue("@Location", myTextBox.Text);
+                sqlCommand.ExecuteScalar();
+            }
+            catch (Exception ex )
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlConnection.Close();
+                ShowZoos();
+            }
+        }
+
+        private void AddAnimalToZoo_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string query = "INSERT INTO ZooAnimal VALUES (@ZooId, @AnimalId)";
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlConnection.Open();
+                sqlCommand.Parameters.AddWithValue("@ZooId", listZoos.SelectedValue);
+                sqlCommand.Parameters.AddWithValue("@AnimalId", listAnimals.SelectedValue);
+                sqlCommand.ExecuteScalar();
+            }
+            catch (Exception ex )
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlConnection.Close();
+                ShowZoos();
+                ShowAssociatedAnimal();
+            }
         }
     }
 }
