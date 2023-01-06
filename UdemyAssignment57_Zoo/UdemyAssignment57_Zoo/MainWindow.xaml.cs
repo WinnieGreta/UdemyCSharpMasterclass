@@ -103,7 +103,7 @@ namespace UdemyAssignment57_Zoo
             {
                 lastSelectedZoo = listZoos.SelectedValue;
             }
-            MessageBox.Show("You selected " + lastSelectedZoo);
+            //MessageBox.Show("You selected " + lastSelectedZoo);
             ShowAssociatedAnimal();
         }
 
@@ -162,6 +162,29 @@ namespace UdemyAssignment57_Zoo
                 sqlCommand.ExecuteScalar();
             }
             catch (Exception ex )
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlConnection.Close();
+                ShowZoos();
+                ShowAssociatedAnimal();
+            }
+        }
+
+        private void RemoveAnimal_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string query = "DELETE FROM ZooAnimal WHERE ZooId = @ZooId AND AnimalId = @AnimalId";
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlConnection.Open();
+                sqlCommand.Parameters.AddWithValue("@ZooId", lastSelectedZoo);
+                sqlCommand.Parameters.AddWithValue("@AnimalId", listAssociatedAnimals.SelectedValue);
+                sqlCommand.ExecuteScalar();
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
