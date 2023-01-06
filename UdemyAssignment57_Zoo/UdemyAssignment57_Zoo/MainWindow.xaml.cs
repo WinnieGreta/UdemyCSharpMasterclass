@@ -12,6 +12,7 @@ namespace UdemyAssignment57_Zoo
     public partial class MainWindow : Window
     {
         SqlConnection sqlConnection;
+        object lastSelectedZoo;
 
         public MainWindow()
         {
@@ -80,7 +81,7 @@ namespace UdemyAssignment57_Zoo
 
                 using(sqlDataAdapter)
                 {
-                    sqlCommand.Parameters.AddWithValue("@ZooId", listZoos.SelectedValue);
+                    sqlCommand.Parameters.AddWithValue("@ZooId", lastSelectedZoo);
 
                     DataTable animalTable = new DataTable();
                     sqlDataAdapter.Fill(animalTable);
@@ -98,6 +99,11 @@ namespace UdemyAssignment57_Zoo
 
         private void listZoos_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
+            if (listZoos.SelectedValue != null)
+            {
+                lastSelectedZoo = listZoos.SelectedValue;
+            }
+            MessageBox.Show("You selected " + lastSelectedZoo);
             ShowAssociatedAnimal();
         }
 
@@ -109,7 +115,7 @@ namespace UdemyAssignment57_Zoo
                 SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
                 sqlConnection.Open();
 
-                sqlCommand.Parameters.AddWithValue("@ZooId", listZoos.SelectedValue);
+                sqlCommand.Parameters.AddWithValue("@ZooId", lastSelectedZoo);
                 sqlCommand.ExecuteScalar();
             }
             catch (Exception ex)
@@ -151,7 +157,7 @@ namespace UdemyAssignment57_Zoo
                 string query = "INSERT INTO ZooAnimal VALUES (@ZooId, @AnimalId)";
                 SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
                 sqlConnection.Open();
-                sqlCommand.Parameters.AddWithValue("@ZooId", listZoos.SelectedValue);
+                sqlCommand.Parameters.AddWithValue("@ZooId", lastSelectedZoo);
                 sqlCommand.Parameters.AddWithValue("@AnimalId", listAnimals.SelectedValue);
                 sqlCommand.ExecuteScalar();
             }
