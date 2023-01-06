@@ -13,7 +13,6 @@ namespace UdemyAssignment57_Zoo
     {
         SqlConnection sqlConnection;
         object lastSelectedZoo;
-        object lastSelectedAnimal;
 
         public MainWindow()
         {
@@ -334,7 +333,6 @@ namespace UdemyAssignment57_Zoo
         {
             if (listAnimals.SelectedItem != null)
             {
-                lastSelectedAnimal = listAnimals.SelectedItem;
                 ShowSelectedAnimalInTextBox();
             }
         }
@@ -389,6 +387,7 @@ namespace UdemyAssignment57_Zoo
                 {
                     sqlConnection.Close();
                     ShowAllAnimals();
+                    ShowAssociatedAnimal();
                 }
             }
             else
