@@ -45,5 +45,52 @@ namespace UdemyAssignment59
                 student.Print();
             }
         }
+
+        public void SortStudentsByAge()
+        {
+            var sortedStudents = from student in students orderby student.Age select student;
+            Console.WriteLine("Students sorted by age");
+            foreach (Student student in sortedStudents)
+            {
+                student.Print();
+            }
+        }
+
+        public void AllStudentsFromKPI()
+        {
+            IEnumerable<Student> kpiStudents = from student in students join university in universities
+                                                 on student.UniversityId equals university.Id where
+                                                 university.Name == "KPI" select student;
+            Console.WriteLine("Students from KPI");
+            foreach (Student student in kpiStudents)
+            {
+                student.Print();
+            }
+        }
+
+        public void AllStudentsFromInputUniversity(string s)
+        {
+            try
+            {
+                int i = int.Parse(s);
+                IEnumerable<Student> universityStudents = from student in students
+                                                   join university in universities
+                                                 on student.UniversityId equals university.Id
+                                                   where
+                                                 university.Id == i
+                                                   select student;
+                IEnumerable<University> universityNames = from university in universities where university.Id == i select university;
+                string universityName = universityNames.First().Name;
+                Console.WriteLine("All students from university " + universityName);
+                foreach (Student student in universityStudents)
+                {
+                    student.Print();
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("There is no university with such Id");
+            }
+        }
     }
 }

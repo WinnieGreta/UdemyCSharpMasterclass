@@ -10,6 +10,10 @@ namespace UdemyAssignment59
             UniversityManager um = new UniversityManager();
             um.MaleStudents();
             um.FemaleStudents();
+            um.SortStudentsByAge();
+            um.AllStudentsFromKPI();
+            Console.WriteLine("Put in university Id");
+            um.AllStudentsFromInputUniversity(Console.ReadLine());
         }
     }
 }
