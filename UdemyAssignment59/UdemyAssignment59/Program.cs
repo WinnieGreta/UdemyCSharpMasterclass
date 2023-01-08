@@ -14,6 +14,7 @@ namespace UdemyAssignment59
             um.AllStudentsFromKPI();
             Console.WriteLine("Put in university Id");
             um.AllStudentsFromInputUniversity(Console.ReadLine());
+            um.StudentAndUniversityNameCollection();
         }
     }
 }
